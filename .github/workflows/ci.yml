@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Lint com ESLint
+        run: npm run lint
+
+      - name: Verificar formatação com Prettier
+        run: npm run format -- --check
+
+      - name: Executar testes com Vitest
+        run: npm run test:run
