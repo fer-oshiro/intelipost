@@ -8,11 +8,11 @@
 }
 
 .layout__main {
-  flex: 1; 
+  flex: 1;
   padding: vars.$spacing-6 vars.$spacing-4;
 
   @include mixins.mq(sm) {
-    padding: vars.$spacing-6; 
+    padding: vars.$spacing-6;
   }
 }
 

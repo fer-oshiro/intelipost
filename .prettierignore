@@ -1,0 +1,18 @@
+# Dependências
+node_modules
+
+# Build
+dist
+build
+coverage
+
+# Arquivos de configuração
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Outros
+.git
+.vscode
+.idea
+*.log

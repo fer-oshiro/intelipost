@@ -2,13 +2,21 @@
 
 @mixin mq($breakpoint) {
   @if $breakpoint == sm {
-    @media (min-width: $bp-sm) { @content; }
+    @media (min-width: $bp-sm) {
+      @content;
+    }
   } @else if $breakpoint == md {
-    @media (min-width: $bp-md) { @content; }
+    @media (min-width: $bp-md) {
+      @content;
+    }
   } @else if $breakpoint == lg {
-    @media (min-width: $bp-lg) { @content; }
+    @media (min-width: $bp-lg) {
+      @content;
+    }
   } @else if $breakpoint == xl {
-    @media (min-width: $bp-xl) { @content; }
+    @media (min-width: $bp-xl) {
+      @content;
+    }
   }
 }
 
