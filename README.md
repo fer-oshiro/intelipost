@@ -1,66 +1,93 @@
-# Intelipost: Teste prático para Frontend Javascript Developer
+# Intelipost Frontend Test - Band & Artist Search
 
-Este é o teste usado por nós aqui da [Intelipost](http://www.intelipost.com.br) para avaliar tecnicamente os candidatos a nossas vagas de Frontend. Se você estiver participando de um processo seletivo para nossa equipe, certamente em algum momento receberá este link, mas caso você tenha chego aqui "por acaso", sinta-se convidado a desenvolver nosso teste e enviar uma mensagem para nós no e-mail `techtests@intelipost.com.br`. 
+Este projeto é a minha solução para o desafio técnico de Frontend da Intelipost, focado na busca de bandas e artistas utilizando as APIs do YouTube e TicketMaster.
 
-Aqui na Intelipost nós aplicamos este mesmo teste para as vagas em todos os níveis, ou seja, um candidato a uma vaga de frontend júnior fará o mesmo teste de um outro candidato a uma vaga de frontend sênior, mudando obviamente o nosso critério de avaliação do resultado do teste. 
+> 📄 **Observação:** O enunciado original do teste da Intelipost está disponível para referência em [`README-intelipost.md`](./README-intelipost.md).
 
-Nós fazemos isso esperando que as pessoas mais iniciantes entendam qual o modelo de profissional que temos por aqui e que buscamos para o nosso time. Portanto, se você estiver se candidatando a uma vaga mais iniciante, não se assuste, e faça o melhor que você puder!
+## Funcionalidades Implementadas
 
-## Instruções
+- [ ] **Busca de Artistas/Bandas:** Campo de busca centralizado que se move para o topo após a primeira pesquisa.
+- [ ] **Listagem de Vídeos do YouTube:** Exibição de resultados de vídeos com título, descrição, thumbnail e canal.
+- [ ] **Reprodução de Vídeos:** Modal interativo para reprodução de vídeos do YouTube (embed).
+- [ ] **Informações do Artista (TicketMaster):** Exibição de dados como nome, imagens e links para redes sociais.
+- [ ] **Experiência do Usuário:**
+  - [ ] Estados de `loading` e `error` para feedback visual.
+  - [ ] Mensagens para "nenhum resultado encontrado".
+- [ ] **Responsividade:** Layout adaptável para diferentes tamanhos de tela (Mobile First).
+- [ ] **Animações:** Transições e animações CSS sutis para uma experiência fluida.
 
-Você deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. Use o *README* principal do seu repositório para nos contar como foi resolver seu teste, as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como rodar seu projeto, afinal a primeira pessoa que irá rodar seu projeto será um programador backend de nossa equipe, e se você conseguir explicar para ele como fazer isso, você já começou bem!
+## 🛠️ Tecnologias Utilizadas
 
-Lembre-se que este é um teste técnico e não um concurso público, portanto, não existe apenas uma resposta correta. Mostre que você é bom e nos impressione, mas não esqueça do objetivo do projeto. 
+- **Framework/Biblioteca:** `React v19`
+- **Linguagem:** `TypeScript`
+- **Build Tool:** `Vite`
+- **Estilização:** `Sass (SCSS Modules)` com `BEM Naming Convention`
+- **Gerenciamento de estado de servidor::** `@tanstack/react-query (React Query)`
+- **Testes:** `Vitest` e `@testing-library/react`
+- **Qualidade de Código:** `ESLint`, `Prettier`, `Husky`, `lint-staged`
+- **CI/CD:** `GitHub Actions` para deploy no `AWS S3` e `CloudFront`
+- **Versão do Node.js:** `v20.19.4`
+- **Versão do npm:** `v10.8.2`
 
-Nós não definimos um tempo limite para resolução deste teste, o que vale para nós e o resultado final e a evolução da criação do projeto até se atingir este resultado, mas acreditamos que este desafio pode ser resolvido em cerca de 16 horas de codificação.
+## 💡 Decisões Técnicas e Justificativas
 
-## O desafio
+### 1. Escolha do Framework (React)
 
-Você irá construir a nossa próxima aplicação de busca de bandas e artistas usando as [APIs do Youtube](https://developers.google.com/youtube/v3/getting-started) e [TicketMaster](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/). É uma aplicação simples, onde iremos buscar por um determinado artista ou banda para termos acesso aos vídeos do Youtube retornados pela busca e também os dados desta banda requisitados através da API do Ticketmaster.
+- **Justificativa:** Embora a Intelipost utilize Vue.js, optei por React por ser a tecnologia com a qual possuo maior proficiência e experiência no desenvolvimento de aplicações complexas. Acredito que os princípios de componentização, gerenciamento de estado e arquitetura de frontend são universais e podem ser aplicados de forma eficaz em qualquer framework, demonstrando minha capacidade de adaptação e aprendizado.
 
-Nossa ideia de interface, é uma tela com apenas um campo de busca no centro da tela, que ao ser acionado com o nome da banda, irá submeter esta pesquisa para a API do Youtube, retornando uma listagem com alguns vídeos desta banda. Com o submit do formulário, o campo deve se posicionar no topo da tela, para que o espaço todo do miolo da página seja melhor aproveitado.
+### 3. Estilização (Sass Modules + BEM)
 
-Para cada um dos vídeos, gostaríamos de ver pelo menos os dados básicos, como titulo, descrição e thumbnail (obviamentem quanto mais informações você mostrar melhor, como rating, usuário que enviou, etc). Quando clicarmos no vídeo, queremos reproduzir o vídeo (embedado ali, em um modal, ou até em um simples link, faça como quiser).
+- **Sass Modules:** Utilizado para encapsular estilos em nível de componente, evitando conflitos e facilitando a manutenção.
+- **BEM (Block Element Modifier):** Adotado para a convenção de nomenclatura de classes CSS, promovendo clareza, modularidade e escalabilidade dos estilos.
+- **Mobile First:** O desenvolvimento do layout foi iniciado com foco em dispositivos móveis, garantindo uma experiência otimizada para telas menores e escalando para desktops.
 
-Além da listagem de vídeos, também gostaríamos de mostrar algumas informações sobre a banda, como os dados de contato em redes sociais, imagens, e o que mais você conseguir extarir da API do TicketMaster. Uma dica é utilizar o recurso de `Attraction Search` da `Discovery API` do TicketMaster para retornar estas informações.
+### 4. Qualidade de Código e Desenvolvimento
 
-Você pode gerar suas próprias API Keys para consumir as APIs, mas se quiser usar as nossas, seguem abaixo:
+- **TypeScript:** Utilizado para adicionar tipagem estática, o que aumenta a robustez do código, facilita a detecção de erros em tempo de desenvolvimento e melhora a legibilidade.
+- **ESLint e Prettier:** Configurados para garantir um padrão de código consistente, identificar potenciais problemas e formatar automaticamente o código, reduzindo o atrito em revisões.
+- **Husky e lint-staged:** Implementados para automatizar a verificação de lint e formatação no `pre-commit`, assegurando que apenas código de alta qualidade seja commitado.
+- **Commits Semânticos:** Utilizei a convenção de commits semânticos (ex: `feat:`, `chore:`, `fix:`) para manter um histórico de Git claro e fácil de navegar.
 
-* Youtube: `AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc`
-* TicketMaster: `q2GNlCrgGo6c8uej3Ib4MsbAC2KIr5nG`
+### 5. Testes
 
-### O que nós esperamos do seu teste
+- **Vitest e React Testing Library:** Configurados para testes unitários de componentes e serviços. Isso garante a confiabilidade das funcionalidades e facilita futuras refatorações.
+  - _(Se você tiver tempo para escrever testes, mencione o que foi testado: ex: "Testes unitários para os serviços de API e para os componentes SearchBar e VideoCard.")_
 
-* Ver na solução a utilização de um framework da sua escolha, mas por aqui utilizamos o VueJS. Utilize o framework da melhor forma possível (metodologia/estrutura). Escolha a versão do ecmascript que lhe agrade
-* Tambér ver a utilização de dependency managers (npm, webpack)
-* Automação de tasks com gulp, grunt ou outra ferramenta de sua escolha
-* Um HTML escrito da maneira mais semântica possível (HTML5/5.1)
-* CSS3/4 - Com um pre processador de CSS (a escolha fica a seu critério, mas por aqui utilizamos SASS)
-* Mobile first e layout responsivo
+### 6. Acessibilidade (A11y) e Performance
 
-### O que nós ficaríamos felizes de ver em seu teste
+- **HTML Semântico:** Priorizei o uso de tags HTML semânticas para melhorar a acessibilidade e o SEO da aplicação.
+- **Lighthouse:** Busquei otimizar a aplicação para obter boas pontuações em Performance, Acessibilidade, Boas Práticas e SEO, utilizando o Lighthouse como ferramenta de auditoria.
+  - _(Se você integrar Lighthouse CI, mencione: "Integrado com CI/CD para garantir que as métricas de qualidade sejam mantidas.")_
 
-* Testes unitários
-* Alguma metodologia para definição e organização do seu código CSS
+### 7. CI/CD e Deploy
 
-### O que nos impressionaria
+- **GitHub Actions:** Configurado para automatizar o processo de build, testes e deploy.
+- **AWS S3 e CloudFront:** A aplicação é automaticamente deployada em um bucket S3 e servida via CloudFront, garantindo alta disponibilidade, performance e HTTPS.
 
-* Testes de aceitação
-* [BEM naming convention](http://getbem.com/naming/)
-* Aplicação de animações em css quando possível e tome cuidado com a performance da sua animação :)
-* Ver o código rodando live (Bucket estático S3, Heroku, Firebase Hosting)
+## ⚙️ Como Rodar o Projeto
 
-### O que nós não gostaríamos
+### Pré-requisitos
 
-* Descobrir que não foi você quem fez seu teste
-* Ver commits grandes, sem muita explicação nas mensagens em seu repositório 
-* Encontrar um um commit com as dependências de NPM e do Bower
+- Node.js (`v20.19.4` ou superior)
+- npm (`v10.8.2` ou superior)
 
-## O que avaliaremos de seu teste
+### Instalação
 
-* Histórico de commits do git
-* As instruções de como rodar o projeto
-* Organização, semântica, estrutura, legibilidade, manutenibilidade do seu código
-* Alcance dos objetivos propostos
-* Adaptação mobile (layout responsivo)
-* Componentização e extensibilidade dos componentes Javascript
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/fer-oshiro/intelipost.git
+   cd intelipost
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+### Executando em Modo Desenvolvimento
+
+```bash
+npm run dev
+```
