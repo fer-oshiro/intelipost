@@ -1,0 +1,23 @@
+@use '../variables' as vars;
+@use '../mixins' as mixins;
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__main {
+  flex: 1; 
+  padding: vars.$spacing-6 vars.$spacing-4;
+
+  @include mixins.mq(sm) {
+    padding: vars.$spacing-6; 
+  }
+}
+
+.layout__footer {
+  padding: vars.$spacing-2 vars.$spacing-4;
+  text-align: center;
+  font-size: vars.$font-size-sm;
+}
