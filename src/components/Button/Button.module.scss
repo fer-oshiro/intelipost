@@ -1,0 +1,55 @@
+@use "@styles/variables" as vars;
+@use "@styles/mixins" as mixins;
+
+.button {
+  @include mixins.flex-center();
+  padding: vars.$spacing-3 vars.$spacing-5;
+  font-size: vars.$font-size-md;
+  font-weight: vars.$font-weight-semibold;
+  border-radius: vars.$border-radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all vars.$transition-base;
+  letter-spacing: vars.$letter-spacing-wide;
+
+  background-color: vars.$color-secondary;
+  box-shadow: vars.$shadow-sm;
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.button--primary {
+  background-color: vars.$color-primary;
+  color: vars.$color-text-on-primary;
+
+  &:hover {
+    background-color: vars.$color-primary-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.button--secondary {
+  background-color: vars.$color-secondary;
+  color: vars.$color-text-on-secondary;
+
+  &:hover {
+    background-color: vars.$color-secondary-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-secondary;
+    outline-offset: 2px;
+  }
+}
+
+.button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
