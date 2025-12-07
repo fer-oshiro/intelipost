@@ -12,7 +12,9 @@
     "prepare": "husky",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "lighthouse": "vite build && vite preview --host 0.0.0.0 --port 4173 & node ./scripts/run-lighthouse.mjs; kill $(lsof -t -i:4173) || true",
+    "lighthouse:ci": "npm run lighthouse"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -35,6 +37,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
@@ -48,7 +51,9 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
+    "jest-axe": "^10.0.0",
     "jsdom": "^27.2.0",
+    "lighthouse": "^12.8.2",
     "lint-staged": "^16.2.7",
     "msw": "^2.12.4",
     "prettier": "^3.7.4",
