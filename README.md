@@ -90,6 +90,7 @@ A aplicação foi organizada para ser fácil de escalar e manter, separando resp
 ```bash
 src/
   components/         # Componentes
+    ui/               # Components base
   pages/              # Páginas do app e seus componentes locais
   hooks/              # Hooks reutilizáveis de lógica de estado/comportamento
   services/           # Integrações com APIs externas
