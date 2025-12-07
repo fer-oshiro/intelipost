@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   lint-test:
-    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'pull_request' && github.base_ref == 'master'
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +37,7 @@ jobs:
 
       - name: Executar testes com Vitest
         run: npm run test:run
+
   audit:
     needs: lint-test
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
