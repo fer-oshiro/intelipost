@@ -1,6 +1,6 @@
 import { Button } from '@/components';
 
-function App() {
+function Home() {
   return (
     <div className="layout">
       <main className="layout__main">
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

@@ -1,14 +1,14 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./Button.module.scss";
+import React from 'react';
+import clsx from 'clsx';
+import styles from './Button.module.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  variant = "primary",
+  variant = 'primary',
   className,
   disabled,
   ...rest
@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={clsx(
         styles.button,
         styles[`button--${variant}`],
-        { [styles["button--disabled"]]: disabled },
+        { [styles['button--disabled']]: disabled },
         className
       )}
       {...rest}
