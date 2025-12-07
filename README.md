@@ -4,6 +4,25 @@ Este projeto é a minha solução para o desafio técnico de Frontend da Intelip
 
 > 📄 **Observação:** O enunciado original do teste da Intelipost está disponível para referência em [`README-intelipost.md`](./README-intelipost.md).
 
+## Sumário
+
+- [Intelipost Frontend Test - Band \& Artist Search](#intelipost-frontend-test---band--artist-search)
+  - [Sumário](#sumário)
+  - [Funcionalidades Implementadas](#funcionalidades-implementadas)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Decisões Técnicas e Justificativas](#decisões-técnicas-e-justificativas)
+    - [1. Escolha do Framework (React)](#1-escolha-do-framework-react)
+    - [3. Estilização (Sass Modules + BEM)](#3-estilização-sass-modules--bem)
+    - [4. Qualidade de Código e Desenvolvimento](#4-qualidade-de-código-e-desenvolvimento)
+    - [5. Testes](#5-testes)
+    - [6. Acessibilidade (A11y) e Performance](#6-acessibilidade-a11y-e-performance)
+    - [7. CI/CD e Deploy](#7-cicd-e-deploy)
+    - [8. Estruturas das Pastas](#8-estruturas-das-pastas)
+  - [Como Rodar o Projeto](#como-rodar-o-projeto)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Instalação](#instalação)
+    - [Executando em Modo Desenvolvimento](#executando-em-modo-desenvolvimento)
+
 ## Funcionalidades Implementadas
 
 - [ ] **Busca de Artistas/Bandas:** Campo de busca centralizado que se move para o topo após a primeira pesquisa.
@@ -16,7 +35,7 @@ Este projeto é a minha solução para o desafio técnico de Frontend da Intelip
 - [ ] **Responsividade:** Layout adaptável para diferentes tamanhos de tela (Mobile First).
 - [ ] **Animações:** Transições e animações CSS sutis para uma experiência fluida.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Framework/Biblioteca:** `React v19`
 - **Linguagem:** `TypeScript`
@@ -29,7 +48,7 @@ Este projeto é a minha solução para o desafio técnico de Frontend da Intelip
 - **Versão do Node.js:** `v20.19.4`
 - **Versão do npm:** `v10.8.2`
 
-## 💡 Decisões Técnicas e Justificativas
+## Decisões Técnicas e Justificativas
 
 ### 1. Escolha do Framework (React)
 
@@ -64,7 +83,26 @@ Este projeto é a minha solução para o desafio técnico de Frontend da Intelip
 - **GitHub Actions:** Configurado para automatizar o processo de build, testes e deploy.
 - **AWS S3 e CloudFront:** A aplicação é automaticamente deployada em um bucket S3 e servida via CloudFront, garantindo alta disponibilidade, performance e HTTPS.
 
-## ⚙️ Como Rodar o Projeto
+### 8. Estruturas das Pastas
+
+A aplicação foi organizada para ser fácil de escalar e manter, separando responsabilidades por **domínio** e **tipo** de artefato (componentes, páginas, hooks, serviços, estilos, testes, utilitários).
+
+```bash
+src/
+  components/         # Componentes
+  pages/              # Páginas do app e seus componentes locais
+  hooks/              # Hooks reutilizáveis de lógica de estado/comportamento
+  services/           # Integrações com APIs externas
+    youtube/
+    ticketmaster/
+  styles/             # Estilos globais da aplicação
+  tests/              # Infraestrutura de testes
+    mocks/            # Handlers do MSW e outros mocks compartilhados
+    setupTests.ts     # Configuração global dos testes
+  utils/              # Funções puras e helpers de formatação/conversão
+```
+
+## Como Rodar o Projeto
 
 ### Pré-requisitos
 
