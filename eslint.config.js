@@ -30,6 +30,8 @@ export default defineConfig([
       ...tseslint.configs.recommended.rules,
       ...reactHooks.configs.flat.recommended.rules,
       'prettier/prettier': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error'],
     },
   },
   prettierConfig,

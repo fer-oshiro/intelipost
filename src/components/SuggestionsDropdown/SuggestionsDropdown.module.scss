@@ -1,0 +1,97 @@
+@use '@styles/variables' as *;
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background-color: $color-bg;
+  border: 1px solid $color-primary;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  max-height: 24rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__message {
+    padding: $spacing-6;
+    text-align: center;
+    color: $color-light-gray;
+    font-size: $font-size-sm;
+
+    &--error {
+      color: $color-error;
+    }
+  }
+
+  &__suggestion {
+    background: none;
+    border: none;
+    padding: 0;
+    color: $color-primary;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-primary-hover;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-bg-muted;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    width: 100%;
+    padding: $spacing-2 $spacing-6;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    font-family: $font-base;
+    font-size: $font-size-base;
+    color: $color-text;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-bg-muted;
+      outline: none;
+    }
+
+    &--highlighted {
+      background-color: $color-bg-muted;
+    }
+  }
+
+  &__image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $border-radius-sm;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    flex: 1;
+    font-weight: $font-weight-semibold;
+  }
+}
