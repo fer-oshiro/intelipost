@@ -1,20 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import { useState, useEffect } from 'react';
 import { fetchTicketMasterSuggestions } from '@/services/ticketmaster';
-
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => clearTimeout(id);
-  }, [value, delay]);
-
-  return debouncedValue;
-}
+import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from './useDebounce';
 
 export function useTicketMasterSuggestions(keyword: string) {
   const debouncedKeyword = useDebounce(keyword, 500);
