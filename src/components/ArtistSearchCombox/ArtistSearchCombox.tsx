@@ -4,13 +4,28 @@ import type { TicketMasterSuggestion } from '@/services/ticketmaster/attractions
 import { SuggestionsDropdown } from '../SuggestionsDropdown/SuggestionsDropdown';
 import { Input } from '../ui';
 import styles from './ArtistSearchCombox.module.scss';
+import { useEffect } from 'react';
 
 export function ArtistSearchCombobox() {
-  const { search, setSearchValue, searchValue, showSuggestions, setShowSuggestions } = useSearch();
+  const {
+    search,
+    setSearchValue,
+    searchValue,
+    showSuggestions,
+    setShowSuggestions,
+    setTicketSuggestions,
+  } = useSearch();
   const { data, isLoading, isError } = useTicketMasterSuggestions(searchValue);
+
+  useEffect(() => {
+    if (data?.attractions) {
+      setTicketSuggestions(data.attractions);
+    }
+  }, [data?.attractions]);
 
   function handleSelect(attraction: TicketMasterSuggestion) {
     search(attraction);
+    setSearchValue(attraction.name);
   }
 
   return (
