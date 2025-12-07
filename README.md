@@ -125,6 +125,12 @@ src/
    npm install
    ```
 
+3. Adicione suas credenciais
+
+   ```bash
+   cp .env.example .env
+   ```
+
 ### Executando em Modo Desenvolvimento
 
 ```bash
