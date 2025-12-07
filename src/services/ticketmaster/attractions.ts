@@ -26,7 +26,10 @@ export interface TicketMasterSuggestResponse {
   };
 }
 
-export async function fetchTicketMasterSuggestions(keyword: string): Promise<{
+export async function fetchTicketMasterSuggestions(
+  keyword: string,
+  page?: number
+): Promise<{
   attractions: TicketMasterSuggestion[];
   suggestions: TicketMasterSpellcheckSuggestion[];
 }> {
@@ -38,7 +41,7 @@ export async function fetchTicketMasterSuggestions(keyword: string): Promise<{
     apikey: env.TICKETMASTER_API_KEY,
     keyword: keyword.trim(),
     includeSpellcheck: 'yes',
-    page: '4',
+    page: page ? page.toString() : '0',
   });
 
   const response = await fetch(`${env.TICKETMASTER_API_URL}attractions?${params}`);
