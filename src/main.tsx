@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App.tsx';
 import './styles/main.scss';
-import { SearchProvider } from './context/search.tsx';
+import { SearchProvider } from './provider/search.tsx';
 
 export const queryClient = new QueryClient();
 
