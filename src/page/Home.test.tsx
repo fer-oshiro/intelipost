@@ -1,4 +1,3 @@
-// src/pages/Home/Home.a11y.test.tsx
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import Home from './Home';
