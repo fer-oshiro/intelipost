@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 import prettierConfig from 'eslint-config-prettier';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
@@ -17,6 +18,7 @@ export default defineConfig([
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
+      pluginQuery.configs['flat/recommended'],
       eslintPluginPrettier,
     ],
     languageOptions: {
@@ -28,6 +30,9 @@ export default defineConfig([
       ...tseslint.configs.recommended.rules,
       ...reactHooks.configs.flat.recommended.rules,
       'prettier/prettier': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error'],
+      'react-hooks/exhaustive-deps': 'off',
     },
   },
   prettierConfig,
