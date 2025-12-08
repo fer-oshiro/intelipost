@@ -2,7 +2,7 @@ import { env } from '@/utils/envs';
 import { http } from 'msw';
 
 export const handlers = [
-  http.get(`${env.API_BASE_URL}/artists`, () => {
+  http.get(`${env.TICKETMASTER_API_URL}/artists`, () => {
     return new Response(
       JSON.stringify([
         { id: '1', name: 'Artist One' },
